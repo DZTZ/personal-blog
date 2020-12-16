@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <transition name = "fade">
+    <transition name="fade">
       <div v-if="is_show">
         <div class="synopsis">
           <div class="box">
             <div class="title">
               <span class="block"></span>
-              <h1>王杰<span>.</span></h1>
+              <h1>偷代码的贼<span>.</span></h1>
             </div>
             <div class="role">
               <div class="block"></div>
@@ -15,17 +15,18 @@
           </div>
           <!-- 背景动画-->
           <vue-particles
-                  color="#58DDE3"
-                  linesColor="#58DDE3"
-                  shapeType="triangle"
-                  hoverMode="grab"
-                  :lineOpacity="0.7"
-                  :particleOpacity="0.7"
-                  class="bg"
+            color="#58DDE3"
+            linesColor="#58DDE3"
+            shapeType="triangle"
+            hoverMode="grab"
+            clickMode="repulse"
+            :lineOpacity="0.7"
+            :particleOpacity="0.7"
+            class="bg"
           />
         </div>
         <div class="main-content ">
-          <div class="btn from-top">From Top</div>
+          阿斯蒂芬
         </div>
       </div>
     </transition>
@@ -88,19 +89,16 @@ export default {
   width: 100%;
   height: 20vh;
   background: url("~@/assets/img/bg.png") center;
-  background-size: 81%;
-  background-position-y: -90px;
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
+  background-size: 50%;
 }
 @media screen and (max-width: 690px) {
   .synopsis {
     background-position-y: 0;
+    background-size: 81%;
   }
 }
 .synopsis .box {
-  width: 160px;
+  width: 240px;
   height: 100%;
   position: relative;
   display: flex;
@@ -216,7 +214,7 @@ export default {
     opacity: 0;
   }
   100% {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
@@ -227,5 +225,16 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active, 2.1.8 版本以下 */ {
   opacity: 0
+}
+
+@media screen and (max-width: 768px) {
+  .title h1 {
+    font-size: 1.5rem !important;
+  }
+}
+
+.main-content{
+  margin: auto;
+  max-width: 736px;
 }
 </style>

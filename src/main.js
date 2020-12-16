@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import VueParticles from "vue-particles";
+import './assets/styles/global.css'
 
 Vue.use(VueParticles);
 Vue.config.productionTip = false;
