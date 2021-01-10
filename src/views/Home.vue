@@ -31,18 +31,17 @@
             <v-tabs color="#77C4D3">
               <v-tab>日记</v-tab>
               <v-tab>作品</v-tab>
-              <v-tab>作品</v-tab>
               <v-tab-item>
                 <div class="content-list">
                   <ul>
-                    <li class="list-item" v-for="item in 5">
+                    <li class="list-item" v-for="item in 5" :key="item">
                       <h2 class="content-title">冬天养狗狗的好处就体现出来了</h2>
                       <div class="item-content">
                         <div class="left-img">
                           <v-img
                               max-height="105"
                               max-width="190"
-                              src="https://picsum.photos/id/11/500/300"
+                              src="https://dztz.github.io/personal-blog/img/bg.376f0eea.png"
                               class="fillet"
                           >
                             <template v-slot:placeholder>
@@ -74,6 +73,8 @@
                             </li>
                           </ul>
                           <div class="date">
+                            <v-icon>mdi-clock-time-nine-outline</v-icon>
+                            <v-icon>mdi-cryengine</v-icon>
                             2021-01-05
                           </div>
                         </div>
@@ -82,18 +83,9 @@
                   </ul>
                 </div>
               </v-tab-item>
-              <v-tab-item>2222</v-tab-item>
-              <v-tab-item>9999</v-tab-item>
+              <v-tab-item>什么都没有</v-tab-item>
             </v-tabs>
           </v-card>
-          <div class="pagination-box">
-            <v-pagination
-                color="#77C4D3"
-                v-model="page"
-                :length="15"
-                :total-visible="7"
-            ></v-pagination>
-          </div>
         </main>
         <!-- 主要内容 结束 -->
       </div>
@@ -251,7 +243,7 @@ export default {
 .synopsis {
   width: 100%;
   height: 20vh;
-  background: url("~@/assets/img/bg.png") center;
+  background: #33691e url("~@/assets/img/bg.png") center;
   background-size: 50%;
 }
 @media screen and (max-width: 690px) {
