@@ -243,7 +243,7 @@ export default {
 .synopsis {
   width: 100%;
   height: 20vh;
-  background: #33691e url("~@/assets/img/bg.png") center;
+  background: #161046 url("~@/assets/img/bg.png") center;
   background-size: 50%;
 }
 @media screen and (max-width: 690px) {
