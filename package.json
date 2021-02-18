@@ -11,6 +11,8 @@
     "animate.css": "^4.1.1",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
+    "v-viewer": "^1.5.1",
     "vue": "^2.6.11",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.2.0",

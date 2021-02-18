@@ -26,64 +26,13 @@
           />
         </div>
         <!-- 主要内容 开始 -->
-        <main class="main-content">
+        <main :class="['main-content', showPhone ? 'main-content-phone' : '']">
           <v-card>
             <v-tabs color="#77C4D3">
+              <v-tab>案例</v-tab></v-tab>
               <v-tab>日记</v-tab>
-              <v-tab>作品</v-tab>
-              <v-tab-item>
-                <div class="content-list">
-                  <ul>
-                    <li class="list-item" v-for="item in 5" :key="item">
-                      <h2 class="content-title">冬天养狗狗的好处就体现出来了</h2>
-                      <div class="item-content">
-                        <div class="left-img">
-                          <v-img
-                              max-height="105"
-                              max-width="190"
-                              src="https://dztz.github.io/personal-blog/img/bg.376f0eea.png"
-                              class="fillet"
-                          >
-                            <template v-slot:placeholder>
-                              <div style="text-align: center;line-height: 102px;">
-                                <v-progress-circular
-                                    indeterminate
-                                    color="teal accent-3"
-                                ></v-progress-circular>
-                              </div>
-                            </template>
-                          </v-img>
-                        </div>
-                        <div class="right-text">
-                          <p>柴犬的倔强很出名，是非常固执的一种犬种，但是为了避免柴犬出现坏习惯，咱们不得不使用“武力”制服它们。</p>
-                        </div>
-                        <div class="bottom-btn">
-                          <ul>
-                            <li>
-                              <v-btn icon color="#ED6237"  x-small>
-                                <v-icon>mdi-thumb-up</v-icon>
-                              </v-btn>
-                              <span class="like-number">12</span>
-                            </li>
-                            <li>
-                              <v-btn icon  color="#88C2D1" x-small>
-                                <v-icon>mdi-comment-text-outline</v-icon>
-                              </v-btn>
-                              <span class="like-number">12</span>
-                            </li>
-                          </ul>
-                          <div class="date">
-                            <v-icon>mdi-clock-time-nine-outline</v-icon>
-                            <v-icon>mdi-cryengine</v-icon>
-                            2021-01-05
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </v-tab-item>
-              <v-tab-item>什么都没有</v-tab-item>
+              <v-tab-item> <WorkList></WorkList> </v-tab-item>
+              <v-tab-item> <DiaryList></DiaryList> </v-tab-item>
             </v-tabs>
           </v-card>
         </main>
@@ -99,11 +48,7 @@
       <EnterAnimationOne v-if="is_show_one" />
     </div>
 
-    <v-snackbar
-        v-model="snackbar"
-        timeout="4000"
-        color="#77C4D3"
-    >
+    <v-snackbar v-model="snackbar" timeout="4000" color="#77C4D3">
       Hello, 我是青青虾条，欢迎来到我的个人博客哟！
     </v-snackbar>
   </div>
@@ -112,20 +57,25 @@
 <script>
 import EnterAnimationOne from "@/components/enter-animation.vue";
 import EnterAnimationTwo from "@/components/enter-animation-two.vue";
+import DiaryList from "@/components/diary-list.vue";
+import WorkList from "@/components/work-list.vue";
 export default {
   name: "Home",
   components: {
     EnterAnimationOne,
-    EnterAnimationTwo
+    EnterAnimationTwo,
+    DiaryList,
+    WorkList,
   },
   data() {
     return {
+      showPhone: this.isPhone,
       is_localStorage: true,
       snackbar: false,
       is_show: false,
       is_show_one: false,
       is_show_two: true,
-      page:1
+      page: 1,
     };
   },
   created() {
@@ -158,8 +108,8 @@ export default {
   methods: {
     bianhua() {
       this.is_show = !this.is_show;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="less">
@@ -174,68 +124,32 @@ export default {
 .main-content {
   margin: 1rem auto;
   max-width: 736px;
+  position: relative;
   //box-shadow: 0 1px 3px rgba(18, 18, 18, 0.1);
   //border: 1px solid #f0f2f6;
   padding-bottom: 40px;
-  /deep/.v-tab{
+  /deep/.v-tab {
     min-width: 40px;
   }
-  /deep/.v-tabs-bar{
+  /deep/.v-tabs-bar {
     //border-bottom: 1px solid #F0F2F6;
   }
-  .content-list {
-    .list-item {
-      border-top: 1px solid #f0f2f6;
-      padding: 20px;
-      .item-content{
-        margin-top: 16px;
-        .left-img,.right-text{
-          display: inline-block;
-          vertical-align: text-top;
-        }
-        .left-img{
-          width: 190px;
-          padding-right: 20px;
-          margin-bottom: 10px;
-        }
-        .right-text{
-          width: 70%;
-          font-size: 15px;
-          color: #121212;
-        }
-        .bottom-btn{
-          overflow: hidden;
-          color: #8590a6;
-          .like-number{
-            font-size: 16px;
-            vertical-align: middle;
-            margin-left: 2px;
-          }
-          ul{
-            display: inline-block;
-          }
-          li{
-            display: inline-block;
-            margin-right: 10px;
-          }
-          .date{
-            float: right;
-          }
-        }
-      }
-    }
-    .content-title {
-      line-height: 1.6rem;
-      color: #121212;
-      font-size: 18px;
-      font-weight: 600;
-      .fillet .v-image__image{
-        border-radius: 5px;
-      }
-    }
-  }
-  .pagination-box{
+  .pagination-box {
     padding-top: 10px;
+  }
+}
+
+.main-content-phone {
+  margin: 0 auto;
+  &::after {
+    content: "";
+    width: 100%;
+    max-width: 736px;
+    height: 10px;
+    display: inline-block;
+    background: #fff;
+    position: absolute;
+    bottom: 2.2rem;
   }
 }
 
