@@ -8,9 +8,7 @@
         <li
           :class="[
             'item',
-            item.projectType === 2 && itemList.length - 1 == index
-              ? 'mbot'
-              : '',
+            item.projectType === 2 && itemList.length - 1 == index ? 'mbot' : ''
           ]"
         >
           <div>
@@ -26,7 +24,7 @@
             <viewer :images="item.previewImg">
               <img
                 v-for="(src, index) in item.previewImg"
-                :src="src"
+                v-lazy="src"
                 :key="index"
                 :class="['viewer-img', showPhone ? 'viewer-img-phone' : '']"
               />
@@ -80,7 +78,7 @@ export default {
     return {
       showPhone: this.isPhone,
       itemList: [],
-      err: false,
+      err: false
     };
   },
   mounted() {
@@ -89,15 +87,15 @@ export default {
   methods: {
     onSelsectImages() {},
     getItemList() {
-      qqxtArticleList().then((res) => {
+      qqxtArticleList().then(res => {
         if (res.state === 0) {
           this.itemList = res.data;
         } else {
           this.err = true;
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -164,7 +162,7 @@ export default {
     .preview-title {
       font-size: 16px;
       font-weight: 500;
-      padding: 5px 0 ;
+      padding: 5px 0;
     }
     .viewer-img {
       .viewer-img-style();
