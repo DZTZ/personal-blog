@@ -25,6 +25,7 @@
               <img
                 v-for="(src, index) in item.previewImg"
                 v-lazy="src"
+                src="src"
                 :key="index"
                 :class="['viewer-img', showPhone ? 'viewer-img-phone' : '']"
               />
